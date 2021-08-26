@@ -1,0 +1,14 @@
+.pies-container {
+    margin: auto;
+    width: 100%;
+} 
+
+.pies-container > .pie-chart {
+    width: 750px;
+    margin: auto;
+    float: left;
+}
+
+.range-selector-chart > .range-selector > svg{
+    position: fixed;
+}

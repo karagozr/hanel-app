@@ -1,0 +1,70 @@
+/* .karyaForm .karyaGroupItem .dx-form-group-content{
+    padding-top: 10px;
+    padding-bottom: 5px;
+}
+
+.karyaForm .karyaGroupItem .dx-form-group-caption{
+    font-size: 16px;
+}
+
+.karyaForm .dx-item-content{
+    min-width: 100px;
+}
+
+.karyaForm .dx-box-item-content {
+    font-size: 13px;
+}
+
+.karyaForm {
+    border-bottom: 2px solid rgb(255, 0, 0);
+}
+.invoiceGrid{
+    padding-top: 5px;
+}
+
+.dx-widget{
+    font-size: 12px;
+}
+.invoiceGrid .dx-datagrid-rowsview .dx-selection.dx-row:not(.dx-row-focused) > td, 
+.invoiceGrid .dx-datagrid-rowsview .dx-selection.dx-row:not(.dx-row-focused) > tr > td, 
+.invoiceGrid .dx-datagrid-rowsview .dx-selection.dx-row:not(.dx-row-focused):hover > td, 
+.invoiceGrid .dx-datagrid-rowsview .dx-selection.dx-row:not(.dx-row-focused):hover > tr > td {
+    background-color: #926060b8;
+    color: rgb(255, 255, 255);
+}
+
+.dx-item-content .dx-toolbar-item-content{
+    min-width: auto;
+} */
+.green-row{
+    color:#9af998;
+}
+.blue-row{
+    color:#8bdbf3;
+}
+
+.toolbar-label{
+    font-size: 12px;
+    font-weight: 400;
+}
+
+.dx-dropdownmenu-popup-wrapper .dx-dropdownmenu-list .dx-list-item {
+    padding: 10px;
+    display: block;
+}
+.dx-dropdowneditor-overlay-flipped{
+    width: 500;
+}
+
+.dx-tab-content .dx-icon.dx-icon-close {
+    display: inline-block;
+    opacity: 0.6;
+    margin-right: 0;
+    margin-left: 7px;
+    font-size: 15px;
+    vertical-align: middle;
+}
+
+.invoiceGrid td{
+    padding: 0px;
+}

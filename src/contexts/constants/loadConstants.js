@@ -1,0 +1,6 @@
+export const loadConstants = {
+    OPEN_MULTI_LOAD : 'OPEN_MULTI_LOAD',
+    CLOSE_MULTI_LOAD : 'CLOSE_MULTI_LOAD',
+    OPEN_LOAD : 'OPEN_LOAD',
+    CLOSE_LOAD : 'CLOSE_LOAD'
+};
