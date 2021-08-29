@@ -4,39 +4,54 @@ import RangeSelector, {
     Size,
     Chart as ChartOptions,
     Margin,
-    Legend,
+    Scale, 
+    MinorTick, 
+    SliderMarker,
     Behavior,
     CommonSeriesSettings as CommonSeriesSettingsOptions,
     Series as RsChartSeries
 } from 'devextreme-react/range-selector';
 
-const Chart = ({ data, updateRange,chartOption, value }) => {
+var now = new Date();
+const date1 = new Date(now.getFullYear(), 0, 1);
+const date2 = new Date(now.getFullYear(), 11, 31);
+
+const defaultDate1 = new Date(now.getFullYear(), now.getMonth(), 1);
+const defaultDate2 = new Date(now.getFullYear(), now.getMonth(), 31);
+
+
+const Chart = ({ data, updateRange,chartOption }) => {
     
-    const rangeValue = value;
-    const rangeData = data;
     const {argumentField,valueField,type} = chartOption;
 
-    console.log('rangeData : ', rangeData)
+    React.useEffect(()=>{
+
+    },[data])
+
 
     return (
         <div className={'range-selector-chart'}>
-            <RangeSelector
+            {data!==[]&&<RangeSelector
                 className={"range-selector"}
-                dataSource={rangeData}
+                dataSource={data}
                 onValueChanged={updateRange}
-                value={rangeValue}
+                //value={rangeValue}
+                defaultValue={[defaultDate1,defaultDate2]}
             >
-
+                
+                <Scale startValue={date1} endValue={date2}  minorTickInterval="day" minRange="day" maxRange="year">
+                    <MinorTick visible={false} />
+                </Scale>
+                <Margin right={5} left={5} />
                 <Size height={120} />
                 <Behavior callValueChanged="onMoving" />
-                <ChartOptions palette="Harmony Light">
-                    <Margin left={0} />
-                    <Legend verticalAlignment="bottom" horizontalAlignment="center" />
+                <ChartOptions palette="Harmony Light"> 
+                    {/* <Legend verticalAlignment="bottom" horizontalAlignment="center" /> */}
                     <RsChartSeries argumentField={argumentField} type={type} valueField={valueField} />
-                    <Legend visible={false} />
                     <CommonSeriesSettingsOptions type="bar" ignoreEmptyPoints={true} />
                 </ChartOptions>
-            </RangeSelector>
+                <SliderMarker format="monthAndDay" />
+            </RangeSelector>}
         </div>
 
     );
@@ -45,20 +60,25 @@ const Chart = ({ data, updateRange,chartOption, value }) => {
 
 Chart.propTypes = {
     data: PropTypes.array.isRequired,
-    value: PropTypes.array,
     updateRange: PropTypes.func,
     chartOption : PropTypes.shape({
-        argumentField: PropTypes.number.isRequired,
-        valueField: PropTypes.number.isRequired,
-        type: PropTypes.number.isRequired
+        argumentField: PropTypes.string.isRequired,
+        valueField: PropTypes.string.isRequired,
+        type: PropTypes.string.isRequired
     }).isRequired,
+    scaleData:PropTypes.shape({
+        firstDate: PropTypes.string.isRequired,
+        endDate: PropTypes.string.isRequired
+    }).isRequired,
+    defaultValue:PropTypes.array
 };
 
 Chart.defaultProps = {
     data: [],
-    value:[],
     updateRange: ({ value }) => console.log("range value : ",value),
     chartOption: {type:'line'},
+    scaleData: {firstDate:date1,lastDate:date2},
+    defaultValue:[defaultDate1,defaultDate2]
 }
 
 export const RangeSelectorChart = React.memo(Chart);
