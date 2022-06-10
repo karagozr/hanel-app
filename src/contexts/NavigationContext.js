@@ -16,6 +16,7 @@ function NavigationProvider(props) {
 
 function withNavigationWatcher(Component) {
   return function (props) {
+    console.log("withNavigationWatcher : ",props)
     const { path } = props.match;
     const { setNavigationData } = useNavigation();
 

@@ -5,3 +5,5 @@ export * from './HesapKodLookUp'
 export * from './StokLookUpGuide'
 export * from './ReferansKodLookUp'
 export * from './ProjeKodLookUp'
+
+export * from './stok-edit-modal'

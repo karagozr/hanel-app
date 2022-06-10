@@ -1,0 +1,63 @@
+.home-dash-sum{
+    color: "#8ee8fd";
+}
+
+.pies-container {
+    margin: auto;
+    width: 100%;
+} 
+
+.pies-container > .pie-chart {
+    width: 750px;
+    margin: auto;
+    float: left;
+}
+
+.range-selector-chart > .range-selector > svg{
+    position: fixed;
+}
+
+.dash-tooltip-table{
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.dash-tooltip .state{
+    margin-top: 10px;
+    margin-bottom: 1px;
+    text-align: center;
+}
+
+.dash-tooltip .dash-tooltip-line{
+    margin-top: 1px;
+    margin-bottom: 15px;
+    border: solid 1px #ff5722;
+}
+
+.dash-tooltip-table >tbody>tr{
+    border-bottom: 1px solid #ff572263;
+}
+
+.options {
+    padding: 10px;
+    background-color: rgba(191, 191, 191, 0.15);
+    margin-top: 10px;
+  }
+  
+  .option {
+    margin-top: 10px;
+  }
+  
+  .caption {
+    font-size: 14px;
+    font-weight: 400;
+  }
+  
+  .option > span {
+    margin-right: 10px;
+  }
+  
+  .option > .dx-widget {
+    display: inline-block;
+    vertical-align: middle;
+  }

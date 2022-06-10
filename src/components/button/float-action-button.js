@@ -19,7 +19,7 @@ export const FloatActionButton = React.memo(() => {
       setLocatioPath(location.pathname);
       actionButton.dispatch(disableActionButton());
     }
-  },[actionButton,location]);
+  },[actionButton,locationPath,location]);
 
 
   if(buttons!==undefined && buttons.length>0){

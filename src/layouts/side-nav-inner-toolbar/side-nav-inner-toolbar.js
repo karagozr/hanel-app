@@ -4,7 +4,7 @@ import Drawer from 'devextreme-react/drawer';
 import ScrollView from 'devextreme-react/scroll-view';
 import Toolbar, { Item } from 'devextreme-react/toolbar';
 import React, { useState, useCallback, useRef } from 'react';
-import { useHistory } from 'react-router';
+import { useHistory } from 'react-router-dom';
 import { Header, SideNavigationMenu, Footer } from '../../components';
 import './side-nav-inner-toolbar.scss';
 import { useScreenSize } from '../../utils/media-query';
@@ -68,7 +68,7 @@ export default function ({ title, children }) {
         closeOnOutsideClick={onOutsideClick}
         openedStateMode={isLarge ? 'shrink' : 'overlap'}
         revealMode={isXSmall ? 'slide' : 'expand'}
-        minSize={isXSmall ? 0 : 60}
+        minSize={isXSmall ? 0 : 40}
         maxSize={250}
         shading={isLarge ? false : true}
         opened={menuStatus === MenuStatus.Closed ? false : true}
@@ -79,7 +79,7 @@ export default function ({ title, children }) {
             menuToggleEnabled={isXSmall}
             toggleMenu={toggleMenu}
           />
-          <ScrollView ref={scrollViewRef} className={'layout-body with-footer'}>
+          <ScrollView ref={scrollViewRef} className={'layout-body with-footer'} >
             <div className={'content'}>
               {React.Children.map(children, item => {
                 return item.type !== Footer && item;

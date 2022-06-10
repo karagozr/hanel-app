@@ -97,18 +97,20 @@ function useAuth() {
 
   const login = async (userName,password) => {
     
-    var result = await api.post("/auth/login", {
+    var result = await api.post("/v1/auth/login", {
                                   userName: userName,
                                   password: password
                                 });
     try{
       if(result.success){
         
-        var decodedToken = jwtDecode(result.data.token)
-        var _userName = decodedToken['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name'];
-
-        var authData= {token:result.data.token,user :_userName};
+        var decodedToken = jwtDecode(result.data.token);
         
+        var _userName = decodedToken['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name'];
+        var _userFullName = decodedToken.Fullname;
+        var authData= {token:result.data.token,user :_userName, fullName:_userFullName};
+
+
         await setUserinLocalStorge(authData);
 
 

@@ -3,12 +3,11 @@ import PropTypes from 'prop-types';
 import SelectBox from 'devextreme-react/select-box';
 import TreeMap, { Tooltip } from 'devextreme-react/tree-map';
 
-const Chart = ({ data, title, topNrange, toolTipTemplate,colorOptionName }) => {
+const Chart = ({ data, title, topNrange, toolTipTemplate,colorOptionName,calculateOthers }) => {
     const [selectedTopN, setTopN]=React.useState(topNrange.defaultValue);
     const [typeOptions]=React.useState(colorizationOptions.filter(x=>x.name===colorOptionName)[0].options);
     const [treeData, setTreeData] = React.useState(data);
 
-    console.log('typeOptions', typeOptions)
 
     const toplist=()=>{
         var list=[];
@@ -19,13 +18,18 @@ const Chart = ({ data, title, topNrange, toolTipTemplate,colorOptionName }) => {
     }
 
     React.useEffect(()=>{
-        var filteredData = Object.assign(data.sort((x,y)=>y.value-x.value).slice(0, selectedTopN));
-        setTreeData(filteredData);
-    },[data])
+        const arrayLength = data.length;
+        var filteredData = Object.assign(data.sort((x,y)=>y.value-x.value).slice(0, selectedTopN-1));
+        var otherData = calculateOthers(Object.assign(data.sort((x,y)=>y.value-x.value).slice(selectedTopN-1,arrayLength )));
+        console.log(title,otherData)
+        setTreeData([...filteredData,otherData]);
+    },[data, title, selectedTopN, toolTipTemplate,colorOptionName,calculateOthers])
 
     const topNvalueChanged = ({value})=>{
-        var filteredData = Object.assign(data.sort((x,y)=>y.value-x.value).slice(0, value));
-        setTreeData(filteredData);
+        const arrayLength = data.length;
+        var filteredData = Object.assign(data.sort((x,y)=>y.value-x.value).slice(0, value-1));
+        var otherData = calculateOthers(Object.assign(data.sort((x,y)=>y.value-x.value).slice(value-1,arrayLength )));
+        setTreeData([...filteredData,otherData]);
         setTopN(value);
     }
 
@@ -71,7 +75,8 @@ Chart.propTypes = {
     }).isRequired,
     data:PropTypes.array.isRequired,
     toolTipTemplate:PropTypes.func,
-    colorOptionName:PropTypes.string
+    colorOptionName:PropTypes.string,
+    calculateOthers:PropTypes.func
 };
 
 Chart.defaultProps = {
@@ -88,7 +93,8 @@ Chart.defaultProps = {
           
         );
     },
-    colorOptionName:"harmony-light"
+    colorOptionName:"harmony-light",
+    calculateOthers:(data)=>({})
 }
 
-export const TreeChart = React.memo(Chart)
+export const TreeChart = Chart

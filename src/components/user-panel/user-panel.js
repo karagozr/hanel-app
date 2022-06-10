@@ -12,6 +12,7 @@ export default function ({ menuMode }) {
   const { state, logout } = useAuth();
   const history = useHistory();
 
+
   function navigateToProfile() {
     history.push("/profile");
   }
@@ -42,7 +43,7 @@ export default function ({ menuMode }) {
             }}
              /> */}
         </div>
-        <div className={'user-name'}>{state.user}</div>
+        <div className={'user-name'}>{state.fullName}</div>
       </div>
 
       {menuMode === 'context' && (

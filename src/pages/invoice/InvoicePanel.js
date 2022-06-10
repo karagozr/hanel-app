@@ -18,7 +18,7 @@ export const InvoicePanel=React.memo(()=>{
     
 
     const onInvoiceClick=React.useCallback((e)=>{
-        history.push('/invoice/view/' + e.data.guid + '/' + e.data.faturaNo)
+        history.push('/counting/invoice/view/' + e.data.guid + '/' + e.data.faturaNo)
     // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
 

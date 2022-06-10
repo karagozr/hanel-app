@@ -4,6 +4,7 @@ import { HtmlViewer } from '../../components'
 import { useInvoice } from '../../contexts/hooks'
 
 export const InvoiceDisplay = ({ ett,width }) => {
+
     const invoice = useInvoice();
     const [htmlData, setHtmlData]=useState('');
     
@@ -14,7 +15,7 @@ export const InvoiceDisplay = ({ ett,width }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     },[ett])
     
-    return (<HtmlViewer data={htmlData} width={width} height={790}/>);
+    return (<HtmlViewer data={htmlData} width={width} height={window.innerHeight-160}/>);
 }
 
 
