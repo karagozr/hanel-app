@@ -11,34 +11,48 @@
   line-height: 1.5;
 
   h3 {
-    font-size: 20px;
+    font-size: 17px;
     margin-top: 10px;
     margin-bottom: 0;
   }
+  .dx-datagrid-header-panel,.dx-treelist-header-panel{
+    padding:0;
+  }
+
 }
 
 .app .content-block {
-  margin-left: 40px;
-  margin-right: 40px;
+  margin-left: 10px;
+  margin-right: 10px;
   margin-top: 10px;
 }
 
 .screen-x-small .content-block {
-  margin-left: 20px;
-  margin-right: 20px;
+  
+  margin-left: 10px;
+  margin-right: 10px;
+
+  
 }
 
 .responsive-paddings {
-  padding-left: 10px;
-  padding-right: 10px;
+  height: calc(100vh - 120px);
+  padding-left: 5px;
+  padding-right: 5px;
   padding-top: 5px;
   padding-bottom: 5px;
   .screen-large & {
-    padding-left: 30px;
-    padding-right: 30px;
-    padding-top: 20px;
-    padding-bottom: 5px;
+    height: calc(100vh - 120px);
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
   }
+  .screen-x-small & {
+    margin-top: 5px;
+    height: calc(100vh - 125px);
+  }
+
 }
 
 .dx-card.wide-card {

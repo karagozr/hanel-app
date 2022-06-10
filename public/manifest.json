@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "hanel-app",
+  "short_name": "HanelApp",
+  "name": "HanelApp",
   "icons": [
     {
       "src": "favicon.ico",
@@ -20,6 +20,7 @@
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "theme_color": "#aaffaa",
+  "background_color": "#ffffff",
+  "scope": "/"
 }

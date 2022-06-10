@@ -22,7 +22,7 @@ export default ({ menuToggleEnabled, title, toggleMenu }) => (
         location={'before'}
         cssClass={'header-title'}
         // text={'title'}
-        render={()=>(<img src={Logo} alt="logo"></img>)}
+        render={()=>(<img src={Logo} alt="logo" style={{width:155,height:33}}></img>)}
         visible={!!title}
       />
       <Item

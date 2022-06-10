@@ -1,5 +1,5 @@
 import React, { useState, useRef, useCallback } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import {  useHistory } from 'react-router-dom';
 import Form, {
   Item,
   Label,
@@ -29,21 +29,22 @@ export default function () {
       history.push("/");
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [login]);
+  }, [login,history]);
 
-  const onCreateAccountClick = useCallback(() => {
-    history.push('/create-account');
-  }, [history]);
+  // const onCreateAccountClick = useCallback(() => {
+  //   history.push('/create-account');
+  // }, [history]);
 
   return (
     <form className={'login-form'} onSubmit={onSubmit}>
+
       <Form formData={formData.current} disabled={loading}>
         <Item
           dataField={'email'}
           editorType={'dxTextBox'}
           editorOptions={emailEditorOptions}
         >
-          <RequiredRule message="Email is required" />
+          <RequiredRule message="username is required" />
           <Label visible={false} />
         </Item>
         <Item
@@ -76,7 +77,7 @@ export default function () {
             </span>
           </ButtonOptions>
         </ButtonItem>
-        <Item>
+        {/* <Item>
           <div className={'link'}>
             <Link to={'/reset-password'}>Forgot password?</Link>
           </div>
@@ -87,7 +88,7 @@ export default function () {
             width={'100%'}
             onClick={onCreateAccountClick}
           />
-        </ButtonItem>
+        </ButtonItem> */}
       </Form>
     </form>
   );
@@ -95,4 +96,4 @@ export default function () {
 
 const emailEditorOptions = { stylingMode: 'filled', placeholder: 'Username', mode: 'text' };
 const passwordEditorOptions = { stylingMode: 'filled', placeholder: 'Password', mode: 'password' };
-const rememberMeEditorOptions = { text: 'Remember me', elementAttr: { class: 'form-text' } };
+const rememberMeEditorOptions = { text: 'Hatırla', elementAttr: { class: 'form-text' } };

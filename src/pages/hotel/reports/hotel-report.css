@@ -1,0 +1,11 @@
+.curr-date{
+    color : #9af998;
+}
+
+.total-date{
+    color : #4ecbeb;
+}
+
+.hotel-agent-report-grid > .dx-datagrid-borders > .dx-datagrid-header-panel {
+    border-bottom: 2px solid #ff5722;
+}

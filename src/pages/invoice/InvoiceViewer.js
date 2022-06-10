@@ -8,6 +8,7 @@ import {InvoiceModal,FloatActionButton} from '../../components'
 import './InvoiceViewer.css'
 import { InvoiceDisplay } from './InvoiceDisplay';
 import { InvoiceDisplayModal } from './InvoiceDisplayModal';
+import { ScrollView } from 'devextreme-react';
 
 
 
@@ -42,21 +43,21 @@ export const InvoiceViewer = ({ match }) => {
             {window.innerWidth > 1080 ? (
             <SplitPane split="vertical" defaultSize='59%' onDragFinished={(e)=>setSetScreenSize(e)} 
                     resizerStyle={{ backgroundColor: 'rgb(225 82 38 / 25%)', width: '5px', cursor: 'col-resize', minWidth: '5px' }}>
-                <div>
-                <h3 className={'content-block'}>Fatura Aktar</h3>
-                <div className={'content-block dx-card responsive-paddings'}>
+                <div >
+                <h3 className={'content-block'} style={{ marginLeft:'30px'}}>Fatura Aktar</h3>
+                <ScrollView className={'content-block dx-card responsive-paddings'} >
                     <InvoiceEdit invoiceGuid={ett} />
+                </ScrollView>
                 </div>
-                </div>
-                <div>
+                <div >
                 {/* <style dangerouslySetInnerHTML={{
                     __html: `
  .iframe-fatura body{
  transform: scale(0.5);
  transform-origin: 0 0; }
                             `}} /> */}
-                    <h3 className={'content-block'}>Fatura Önizleme</h3>
-                    <div className={'content-block dx-card responsive-paddings'} style={{padding:'5px'}}>
+                    <h3 className={'content-block'} style={{ marginLeft:'30px'}}>Fatura Önizleme</h3>
+                    <div className={'content-block dx-card responsive-paddings'} style={{padding:'5px', margin:'10px',marginRight:'30px'}}>
                         {/* <iframe id='iframekey' className={"iframe-fatura"} scrolling="no" frameBorder="0" height={window.innerHeight*0.8} width="100%" 
                         src={`${process.env.REACT_APP_BASE_URL}/Invoice/GetDocument?ett=${ett}&belgeTuru=HTML`} 
                         style={{backgroundColor:'white'}}>

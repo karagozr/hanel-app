@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 //import {SpeedDialButton,KaryaContainer} from '../../tools'
-import DataGrid, { Column, FilterRow, Paging,StateStoring,Pager } from 'devextreme-react/data-grid';
+import DataGrid, { Column, FilterRow, Paging,Scrolling,StateStoring,Pager } from 'devextreme-react/data-grid';
 import DropDownButton from 'devextreme-react/drop-down-button';
 import { useInvoice,useGuide } from '../../contexts/hooks';
 import { useAuth } from '../../contexts'
@@ -169,6 +169,8 @@ export default  React.memo((props) => {
         return JSON.parse(localStorage.getItem('invoice-grid-list'));
     }, []);
 
+    let gridHeight = parseInt((window.innerHeight-250));
+
     return (
         <React.Fragment>
             <InvoiceAttachNoteModal invoiceId={openNoteAttacher.invoiceId}  open={openNoteAttacher.open} 
@@ -176,7 +178,7 @@ export default  React.memo((props) => {
             <h3 className={'content-block'}>Gelen Faturalar</h3>
             
             <div className={'content-block dx-card responsive-paddings'}>
-            <Toolbar style={{ borderBottom: "2px solid rgb(255, 87, 34,1)", marginBottom:  "10px"}} >
+            <Toolbar style={{ borderBottom: "2px solid rgb(255, 87, 34,1)", paddingBottom:  "15px"}} >
                 <Item location="before" cssClass="karya-toolbar" html=" <div class='toolbar-label'>Fat.Tarih-1</div>"       widget="dxDateBox"      locateInMenu="auto" options={{value:formData.firstDate, displayFormat:"dd/MM/yyyy", type:"date", onValueChanged:(e) => setFormData({ ...formData, firstDate: e.value })}} />
                 <Item location="before" cssClass="karya-toolbar" html=" <div class='toolbar-label'>Fat.Tarih-2</div>"       widget="dxDateBox"      locateInMenu="auto" options={{value:formData.lastDate, displayFormat:"dd/MM/yyyy", type:"date", onValueChanged:(e) => setFormData({ ...formData, lastDate: e.value })}}/>
                 <Item location="before" cssClass="karya-toolbar" html=" <div class='toolbar-label'>Gelis Tarih-1</div>"     widget="dxDateBox"      locateInMenu="auto" options={{value:formData.incomeFirstDate, displayFormat:"dd/MM/yyyy", type:"date", onValueChanged:(e) => setFormData({ ...formData, incomeFirstDate: e.value })}} />
@@ -192,6 +194,7 @@ export default  React.memo((props) => {
                     rowAlternationEnabled={true}
                     selection={{ mode: 'single', color: 'red' }}
                     showBorders={true}
+                    height={gridHeight}
                     columnHidingEnabled={true}
                     allowColumnResizing={true}
                     columnResizingMode={"widget"}
@@ -213,7 +216,7 @@ export default  React.memo((props) => {
                     //defaultColumns={columns}
                     onRowDblClick={onRowDblClick}
                 >
-                    <Paging defaultPageSize={15} />
+                    <Scrolling columnRenderingMode="virtual" />
                     <Column key={0}
                                 tabIndex={-1}
                                 dataField={'kayitli'}
@@ -242,7 +245,7 @@ export default  React.memo((props) => {
                         ))
                     }
                     <FilterRow visible={true}></FilterRow> 
-                    <Pager showPageSizeSelector={true} defaultPageSize={15} allowedPageSizes={[10, 15,25]} />
+                    {/* <Pager showPageSizeSelector={true} defaultPageSize={gridHeight} allowedPageSizes={[gridHeight-10,gridHeight-5,gridHeight ]} /> */}
                     <StateStoring enabled={true} type="custom" customLoad={loadCustomGridState} customSave={saveCustomGridState}/>
                 </DataGrid>
             </div>

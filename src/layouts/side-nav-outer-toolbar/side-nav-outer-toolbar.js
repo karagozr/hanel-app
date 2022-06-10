@@ -1,7 +1,7 @@
 import Drawer from 'devextreme-react/drawer';
 import ScrollView from 'devextreme-react/scroll-view';
 import React, { useState, useCallback, useRef } from 'react';
-import { useHistory } from 'react-router';
+import { useHistory } from 'react-router-dom';
 import { Header, SideNavigationMenu, Footer } from '../../components';
 import './side-nav-outer-toolbar.scss';
 import { useScreenSize } from '../../utils/media-query';
@@ -77,7 +77,7 @@ export default function ({ title, children }) {
         closeOnOutsideClick={onOutsideClick}
         openedStateMode={'overlap'}
         revealMode={isXSmall ? 'slide' : 'expand'}
-        minSize={isXSmall ? 0 : 60}
+        minSize={isXSmall ? 0 : 50}
         maxSize={250}
         shading={true}
         opened={menuStatus === MenuStatus.Closed ? false : true}
@@ -87,11 +87,11 @@ export default function ({ title, children }) {
 
           <ScrollArea scrollViewRef={scrollViewRef} children={children}/>
           
-          <div className={'footer-block'}>
+          {/* <div className={'footer-block'}>
               {React.Children.map(children, item => {
                 return item.type === Footer && item;
               })}
-          </div>
+          </div> */}
 
         </div>
 
@@ -122,7 +122,7 @@ const ScrollArea = ({scrollViewRef,children}) =>{
   }, []);
   
   return(
-    <ScrollView ref={scrollViewRef} height={height-90}>
+    <ScrollView ref={scrollViewRef} height={ height-38} >
             <div className={'content'}>
               {React.Children.map(children, item => {
                 return item.type !== Footer && item;

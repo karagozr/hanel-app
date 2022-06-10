@@ -14,7 +14,7 @@ import RangeSelector, {
 
 var now = new Date();
 const date1 = new Date(now.getFullYear(), 0, 1);
-const date2 = new Date(now.getFullYear(), 11, 31);
+const date2 = new Date(now.getFullYear()+1, 0, 1);
 
 const defaultDate1 = new Date(now.getFullYear(), now.getMonth(), 1);
 const defaultDate2 = new Date(now.getFullYear(), now.getMonth(), 31);
@@ -48,6 +48,7 @@ const Chart = ({ data, updateRange,chartOption }) => {
                 <ChartOptions palette="Harmony Light"> 
                     {/* <Legend verticalAlignment="bottom" horizontalAlignment="center" /> */}
                     <RsChartSeries argumentField={argumentField} type={type} valueField={valueField} />
+                    
                     <CommonSeriesSettingsOptions type="bar" ignoreEmptyPoints={true} />
                 </ChartOptions>
                 <SliderMarker format="monthAndDay" />

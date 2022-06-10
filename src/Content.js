@@ -28,9 +28,9 @@ export const Content=React.memo((props) => {
         <FloatActionButton />
         <SwitchRoute/>
       </div>
-      <Footer>
+      {/* <Footer>
         Copyright © 2020-{new Date().getFullYear()} {appInfo.title} Inc.
-      </Footer>
+      </Footer> */}
     </SideNavBarLayout>
   );
 })
